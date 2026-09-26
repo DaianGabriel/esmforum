@@ -17,7 +17,25 @@ app.get('/', (req, res) => {
     res.send(perguntas);
   }
   catch(erro) {
-    res.status(500).json(erro.message); 
+    res.status(500).json(erro.message);
+  }
+});
+
+app.get('/perguntas/busca', (req, res) => {
+  try {
+    const termo = req.query.termo;
+
+    if (!termo || termo.trim() === '') {
+      return res.status(400).json({
+        erro: 'Informe um termo para realizar a busca.'
+      });
+    }
+
+    const perguntas = modelo.buscar_perguntas(termo);
+    res.json(perguntas);
+  }
+  catch(erro) {
+    res.status(500).json(erro.message);
   }
 });
 
@@ -27,14 +45,15 @@ app.post('/perguntas', (req, res) => {
     res.json({id_pergunta: id_pergunta});
   }
   catch(erro) {
-    res.status(500).json(erro.message); 
-  } 
+    res.status(500).json(erro.message);
+  }
 });
 
 app.get('/respostas/:id_pergunta', (req, res) => {
   const id_pergunta = req.params.id_pergunta;
   const pergunta = modelo.get_pergunta(id_pergunta);
   const respostas = modelo.get_respostas(id_pergunta);
+
   try {
     res.json({
       pergunta: pergunta,
@@ -42,24 +61,30 @@ app.get('/respostas/:id_pergunta', (req, res) => {
     });
   }
   catch(erro) {
-    res.status(500).json(erro.message); 
-  } 
+    res.status(500).json(erro.message);
+  }
 });
 
 app.post('/respostas', (req, res) => {
   try {
     const id_pergunta = req.body.id_pergunta;
     const resposta = req.body.resposta;
-    const id_resposta = modelo.cadastrar_resposta(id_pergunta, resposta);
+
+    const id_resposta = modelo.cadastrar_resposta(
+      id_pergunta,
+      resposta
+    );
+
     res.json({id_resposta: id_resposta});
   }
   catch(erro) {
-    res.status(500).json(erro.message); 
-  } 
+    res.status(500).json(erro.message);
+  }
 });
 
 // espera e trata requisições de clientes
 const port = 5000;
+
 app.listen(port, 'localhost', () => {
   console.log(`ESM Forum rodando em ${port}`)
 });
