@@ -78,6 +78,16 @@ Uma possibilidade de melhoria seria introduzir serviços ou abstrações interme
 
 Essa estrutura facilitaria a substituição de implementações e permitiria ampliar o sistema com menor impacto no código existente, contribuindo também para o Princípio Aberto/Fechado (OCP).
 
+## Exemplos de código analisados
+
+### Exemplo positivo 1 - SRP
+
+No `server.js`, a rota delega a operação ao modelo:
+
+```javascript
+const perguntas = modelo.listar_perguntas();
+res.send(perguntas);
+
 ## Conclusão
 
 O ESM Forum já apresenta uma separação básica entre a API, a lógica da aplicação e o acesso ao banco de dados.

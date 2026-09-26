@@ -109,6 +109,20 @@ Resultado: a API retornou HTTP 400 com a mensagem:
 
 `Informe um termo para realizar a busca.`
 
+## Trechos da implementação relacionados ao SOLID
+
+### SRP
+
+A consulta específica de perguntas foi separada no `pergunta_repository.js`:
+
+```javascript
+function buscar_por_palavra_chave(termo) {
+  return bd.queryAll(
+    'select * from perguntas where texto like ?',
+    [`%${termo}%`]
+  );
+}
+
 ## Conclusão
 
 A implementação adicionou ao ESM Forum a busca de perguntas por palavra-chave e introduziu uma separação específica para o acesso aos dados das perguntas.

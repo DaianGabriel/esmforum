@@ -96,6 +96,19 @@ O arquivo `server.js`, por exemplo, concentra as definições das rotas da API, 
 
 A evolução do projeto pode exigir uma separação maior entre rotas, serviços, regras de negócio e persistência.
 
+## Diagrama da Arquitetura Atual
+
+O diagrama da arquitetura atual representa a comunicação entre o frontend React, a API Express, o modelo, os componentes de acesso aos dados e o banco SQLite.
+
+Os arquivos do diagrama são:
+
+- `arquitetura_atual.mmd`
+- `arquitetura_atual.png`
+
+O fluxo representado é:
+
+`Usuário -> Frontend React -> server.js -> modelo.js -> Repository/Acesso a Dados -> SQLite`
+
 ## Conclusão
 
 A arquitetura atual é adequada ao tamanho inicial do ESM Forum e permite separar apresentação, API e persistência.
