@@ -1,0 +1,20 @@
+classDiagram
+    class PerguntaController
+    class PerguntaService
+
+    class EstrategiaBusca {
+        <<interface>>
+        +buscar(termo)
+    }
+
+    class BuscaPorPalavraChave
+    class BuscaPorVotos
+    class BuscaPorRespostas
+    class PerguntaRepository
+
+    PerguntaController --> PerguntaService
+    PerguntaService --> EstrategiaBusca
+    EstrategiaBusca <|.. BuscaPorPalavraChave
+    EstrategiaBusca <|.. BuscaPorVotos
+    EstrategiaBusca <|.. BuscaPorRespostas
+    BuscaPorPalavraChave --> PerguntaRepository

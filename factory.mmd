@@ -1,0 +1,21 @@
+classDiagram
+    class PerguntaController
+
+    class EstrategiaBuscaFactory {
+        +criar(tipo)
+    }
+
+    class EstrategiaBusca {
+        <<interface>>
+        +buscar(termo)
+    }
+
+    class BuscaPorPalavraChave
+    class BuscaPorVotos
+    class BuscaPorRespostas
+
+    PerguntaController --> EstrategiaBuscaFactory
+    EstrategiaBuscaFactory --> EstrategiaBusca
+    EstrategiaBusca <|.. BuscaPorPalavraChave
+    EstrategiaBusca <|.. BuscaPorVotos
+    EstrategiaBusca <|.. BuscaPorRespostas

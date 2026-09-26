@@ -1,0 +1,15 @@
+flowchart LR
+    U[Usuário] --> F[Frontend React]
+    F -->|HTTP / JSON| S[server.js]
+    S --> M[modelo.js]
+    M --> R[pergunta_repository.js]
+    M --> B[bd/bd_utils.js]
+    R --> B
+    B --> DB[(SQLite)]
+
+    subgraph Backend Node.js / Express
+        S
+        M
+        R
+        B
+    end

@@ -1,0 +1,16 @@
+flowchart LR
+    U[Usuário] --> F[Frontend React]
+
+    F --> R[Routes / Controllers]
+
+    R --> S[Services]
+
+    S --> PR[Repositories]
+
+    PR --> BD[(SQLite)]
+
+    subgraph Backend Node.js / Express
+        R
+        S
+        PR
+    end

@@ -1,0 +1,26 @@
+flowchart LR
+    U[Usuário] --> F[Frontend React]
+
+    F -->|Requisição HTTP| PC[PerguntaController]
+    F -->|Requisição HTTP| RC[RespostaController]
+
+    PC --> PS[PerguntaService]
+    RC --> RS[RespostaService]
+
+    PS --> PR[PerguntaRepository]
+    RS --> RR[RespostaRepository]
+
+    PR --> DB[(SQLite)]
+    RR --> DB
+
+    PC -->|Resposta JSON| F
+    RC -->|Resposta JSON| F
+
+    subgraph Backend MVC
+        PC
+        RC
+        PS
+        RS
+        PR
+        RR
+    end
