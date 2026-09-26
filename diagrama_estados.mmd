@@ -1,0 +1,11 @@
+stateDiagram-v2
+    [*] --> Criada
+
+    Criada --> Publicada : cadastrar pergunta
+    Publicada --> Respondida : receber resposta
+    Respondida --> Respondida : receber nova resposta
+
+    Publicada --> Encerrada : encerrar pergunta
+    Respondida --> Encerrada : encerrar pergunta
+
+    Encerrada --> [*]

@@ -1,0 +1,20 @@
+sequenceDiagram
+    actor U as Usuário
+    participant V as Frontend React
+    participant C as Controlador
+    participant M as Modelo
+    participant BD as Banco de Dados
+
+    U->>V: Informa palavra-chave
+    U->>V: Solicita busca
+    V->>C: Envia termo de busca
+    C->>M: buscar_perguntas(termo)
+    M->>BD: Consulta perguntas pelo termo
+    BD-->>M: Retorna perguntas encontradas
+    M-->>C: Retorna lista de perguntas
+    C-->>V: Retorna resultados
+    V-->>U: Exibe perguntas encontradas
+
+    alt Nenhuma pergunta encontrada
+        V-->>U: Informa que não há resultados
+    end

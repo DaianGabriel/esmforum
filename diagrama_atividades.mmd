@@ -1,0 +1,21 @@
+flowchart TD
+    A([Início]) --> B[Acessar página de perguntas]
+    B --> C[Informar palavra-chave]
+    C --> D[Solicitar busca]
+
+    D --> E{Campo de busca está vazio?}
+
+    E -- Sim --> F[Informar que é necessário fornecer um termo]
+    F --> C
+
+    E -- Não --> G[Pesquisar perguntas]
+    G --> H{Foram encontradas perguntas?}
+
+    H -- Sim --> I[Exibir perguntas encontradas]
+    H -- Não --> J[Informar que não foram encontrados resultados]
+
+    I --> K{Realizar nova busca?}
+    J --> K
+
+    K -- Sim --> C
+    K -- Não --> L([Fim])
